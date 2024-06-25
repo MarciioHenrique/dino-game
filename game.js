@@ -3,9 +3,11 @@ import { parallax } from "./parallax.js";
 const canvas = document.getElementById("gameCanvas");
 canvas.width = window.innerWidth / 2;
 const context = canvas.getContext("2d");
+
 const ambientSound = document.getElementById("ambientSound");
 ambientSound.loop = true;
-ambientSound.volume = 1;
+ambientSound.volume = 0.1;
+
 const failSound = document.getElementById("failSound");
 ambientSound.volume = 1;
 
@@ -63,7 +65,6 @@ let dino = {
 
     if (this.y + this.height > canvas.height - 10) {
       this.y = canvas.height - 10 - this.height;
-      console.log(this.y);
       this.dy = 0;
       this.grounded = true;
     }
@@ -174,10 +175,10 @@ function randomIntFromRange(min, max) {
 function detectCollision() {
   obstacles.list.forEach((obstacle) => {
     if (
-      dino.x - 20 < obstacle.x + obstacle.width &&
-      dino.x + dino.width > obstacle.x &&
+      dino.x < obstacle.x + obstacle.width &&
+      dino.x + dino.width > obstacle.x + 10 &&
       dino.y - 50 < obstacle.y + obstacle.height &&
-      dino.y + dino.height - 20 > obstacle.y
+      dino.y + dino.height - 20 > obstacle.y + 10
     ) {
       // Colisão detectada
       dino.deadDino(context);
@@ -207,27 +208,22 @@ function updateGame() {
 
 // Função para reiniciar o jogo
 function reloadGame() {
-  //reset the obstacles
   obstacles.list = [];
 
-  //reset the score
   score.points = 0;
 
-  //reset the game state
   isGameRunning = true;
 
-  //play the ambient sound
   ambientSound.play();
 
-  //start the game loop
   gameLoop();
 }
 
 // Função principal do jogo
 function gameLoop() {
   if (isGameRunning) {
-    drawGame();
     updateGame();
+    drawGame();
     score.points += 0.1;
     requestAnimationFrame(gameLoop);
   } else {
