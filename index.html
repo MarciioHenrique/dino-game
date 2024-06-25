@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dino Runner</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="./assets/dino.png" />
+  </head>
+  <body>
+    <audio id="failSound" src="sound/game_over.mp3"></audio>
+    <audio id="ambientSound" src="sound/main_theme.mp3" autoplay="true"></audio>
+    <audio id="jumpSound" src="sound/jump_sound.ogg"></audio>
+    <canvas id="gameCanvas" width="800" height="200">
+      <img src="./assets/parallax/city1.png" alt="" id="city1" />
+      <img src="./assets/parallax/city2.png" alt="" id="city2" />
+      <img src="./assets/parallax/city3.png" alt="" id="city3" />
+      <img src="./assets/parallax/city4.png" alt="" id="city4" />
+      <img src="./assets/parallax/clouds.png" alt="" id="clouds" />
+      <img src="./assets/parallax/trees.png" alt="" id="trees" />
+      <img src="./assets/parallax/ground.png" alt="" id="ground" />
+    </canvas>
+    <script type="module" src="game.js"></script>
+    <script type="module" src="parallax.js"></script>
+  </body>
+</html>
+
+<!--
+  ARRUMAR OS PONTOS DE CONTATO
+  VER O TAMANHO DA TELA (AUMENTAR O WIDTH DO CANVAS)
+  ESCOLHER SONS
+  VERIFICAR IMAGENS DO JOGADOR E DO OBSTACULO
+-->
