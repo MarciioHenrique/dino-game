@@ -5,8 +5,8 @@ canvas.width = window.innerWidth / 2;
 const context = canvas.getContext("2d");
 
 const ambientSound = document.getElementById("ambientSound");
-ambientSound.loop = true;
 ambientSound.volume = 0.1;
+ambientSound.play();
 
 const failSound = document.getElementById("failSound");
 ambientSound.volume = 1;
